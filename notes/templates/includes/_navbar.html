@@ -9,14 +9,12 @@
       <!-- Dont delete that ul It keep buttons on the right side -->
       <ul class="navbar-nav mr-auto"></ul>
       <form class="form-inline my-2 my-md-0">
-        <a href="{% url 'register' %}" class="btn btn-primary my-2 mr-3 ">Zarejestruj się</a>
-        <a href="{% url 'login_view' %}" class="btn btn-success my-2 mr-3 ">Zaloguj się</a>
-        {% comment %}
         {% if not request.user.is_authenticated %}
-        {% endif %}
+          <a href="{% url 'register' %}" class="btn btn-primary my-2 mr-3 ">Zarejestruj się</a>
+          <a href="{% url 'login_view' %}" class="btn btn-success my-2 mr-3 ">Zaloguj się</a>
         {% else %}
-          <a href="{% url 'logout_view' %}" class="btn btn-primary my-2 mr-3 ">Wyloguj się</a>
-        {% endcomment %}
+          <a href="{% url 'logout_view' %}" class="btn btn-danger my-2 mr-3 ">Wyloguj się</a>
+        {% endif %}
         <!-- <input class="form-control" type="text" placeholder="Search"> -->
       </form>
     </div>

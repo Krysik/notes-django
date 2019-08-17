@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 
 def index_view(request):
     return render(request, 'index.html', {})
@@ -31,3 +32,8 @@ def login_view(request):
             error = '<span style="color: red;">Dane logowania nie są poprawne</span>'
 
     return render(request, 'accounts/login.html', {'form': form, 'error': error})
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('login_view')
