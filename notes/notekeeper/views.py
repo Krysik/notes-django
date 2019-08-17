@@ -3,12 +3,18 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import AddNoteForm
+from .models import Note
 
 
 @login_required
 def dashboard(request, user_id):
     user = User.objects.get(pk=user_id)
-    return render(request, 'notekeeper/dashboard.html', {'user': user})
+    notes = Note.objects.filter(user=user_id)
+    context = {
+        'user': user,
+        'notes': notes
+    }
+    return render(request, 'notekeeper/dashboard.html', context)
 
 @login_required
 def create_note(request, user_id):

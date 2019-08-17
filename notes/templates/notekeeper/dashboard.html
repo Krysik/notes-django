@@ -2,16 +2,15 @@
 {% block content %}
   {% include 'includes/_navbar.html' %}
   <div class="container pt-4">
-    <h1>Dashboard page</h1>
+    <h2>Dashboard page</h2>
     <div class="row px-3 py-4">
       <a href="{% url 'create_note' user.id %}" class="btn btn-outline-info">Dodaj notatkę</a>
     </div>
     <div class="notes">
       <div class="row">
-        {% comment %}
         {% if notes %}
           {% for note in notes %}
-            <a href="#" class="text-dark note">
+            <a href="#">
               <div class="col">
                 <div class="card">
                   <div class="card-body">
@@ -25,15 +24,6 @@
         {% else %}
           <p>Brak notatek</p>
         {% endif %}
-        {% endcomment %}
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Eofowef</h5>
-              <p class="card-text">djasodjaosdjaopsmcvaopsfjosdkfopsdkfopsdkfosdowjo</p>
-            </div>
-          </div>
-        </div>
       </div> {% comment %} row {% endcomment %}
     </div>
   </div>
