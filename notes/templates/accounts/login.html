@@ -7,7 +7,10 @@
       <form method="POST" class="form-signin">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Zaloguj się</button>
+        {% if error %}
+          {{ error|safe }}
+        {% endif %}
+        <button type="submit" class="btn btn-success my-2">Zaloguj się</button>
       </form>
     </div>
   </div>
