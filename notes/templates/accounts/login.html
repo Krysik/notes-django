@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% include 'includes/_navbar.html' %}
+  <div class="login-bg">
+    <div class="container text-center wrapper">
+      <h3>Zaloguj się do swojego konta</h3>
+      <form method="POST" class="form-signin">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Zaloguj się</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
