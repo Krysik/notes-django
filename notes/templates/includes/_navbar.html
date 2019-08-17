@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-5">
   <div class="container">
     <a class="navbar-brand" href="{% url 'index' %}">NoteKeeper |</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,12 +9,14 @@
       <!-- Dont delete that ul It keep buttons on the right side -->
       <ul class="navbar-nav mr-auto"></ul>
       <form class="form-inline my-2 my-md-0">
-        {% if not user.is_authenticated %}
-            <a href="{% url 'register' %}" class="btn btn-outline-primary my-2 mr-3 ">Zarejestruj się</a>
-          <a href="{% url 'login_view' %}" class="btn btn-outline-success my-2 mr-3 ">Zaloguj się</a>
+        <a href="{% url 'register' %}" class="btn btn-primary my-2 mr-3 ">Zarejestruj się</a>
+        {% comment %}
+        {% if not request.user.is_authenticated %}
+        <a href="{% url 'login_view' %}" class="btn btn-outline-success my-2 mr-3 ">Zaloguj się</a>
+        {% endif %}
         {% else %}
           <a href="{% url 'logout_view' %}" class="btn btn-primary my-2 mr-3 ">Wyloguj się</a>
-        {% endif %}
+        {% endcomment %}
         <!-- <input class="form-control" type="text" placeholder="Search"> -->
       </form>
     </div>
