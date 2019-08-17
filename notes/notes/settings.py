@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     # own apps
     'accounts',
+    'notekeeper',
 ]
 
 MIDDLEWARE = [
@@ -134,4 +135,4 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 STATIC_URL = '/static/'
-LOGIN_URL = '/accounts/login/'
+LOGIN_URL = '/accounts/login'

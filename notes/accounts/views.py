@@ -27,7 +27,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('index')
+            return redirect('dashboard', user.id) # notekeeper app
         else:
             error = '<span style="color: red;">Dane logowania nie są poprawne</span>'
 

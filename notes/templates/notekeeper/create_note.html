@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% include 'includes/_navbar.html' %}
+  <div class="container pt-4">
+    <h1>Utwórz notatkę</h1>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-success mt-2">Utwórz</button>
+    </form>
+  </div>
+
+{% endblock %}
