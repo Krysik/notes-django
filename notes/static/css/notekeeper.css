@@ -64,10 +64,22 @@
 
 /* Dashboard */
 .card-note{
-  height: 200px;
-  overflow-y: none;
+  height: 240px;
+  min-width: 200px;
+  max-width: 270px;
+  overflow: hidden;
+  position: relative;
 }
 
 .note:hover {
   text-decoration: none;
+}
+
+.update-date {
+  position: absolute;
+  padding-top: 3px;
+  background-color: #fff;
+  width: 100%;
+  left: 5px;
+  bottom: 0;
 }

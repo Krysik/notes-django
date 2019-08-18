@@ -10,17 +10,17 @@
       <div class="row">
         {% if notes %}
           {% for note in notes %}
-            <div class="col">
-              <div class="card card-note">
-                <div class="card-body">
-                  <a href="#" class="note">
-                    <h5 class="card-title">{{ note.title }}</h5>
-                  </a>
-                  <p class="card-text">{{ note.content|safe }}</p>
-                  <small>Ostatnia aktualizacja: {{ note.updated_at }}</small>
+              <div class="col">
+                <div class="card card-note">
+                  <div class="card-body">
+                    <a href="{% url 'update_note' request.user.id note.id %}" class="note">
+                      <h5 class="card-title">{{ note.title }}</h5>
+                    </a>
+                    <p class="card-text">{{ note.content|safe }}</p>
+                    <small class="update-date">Ostatnia aktualizacja: {{ note.updated_at }}</small>
+                  </div>
                 </div>
               </div>
-            </div>
           {% endfor %}
         {% else %}
           <p>Brak notatek</p>

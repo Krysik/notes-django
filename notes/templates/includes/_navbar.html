@@ -7,7 +7,18 @@
 
     <div class="collapse navbar-collapse" id="navbarsExample03">
       <!-- Dont delete that ul It keep buttons on the right side -->
-      <ul class="navbar-nav mr-auto"></ul>
+      {% if request.user.is_authenticated %}
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'dashboard' user.id %}">Twój panel</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">Ustawienia</a>
+          </li>
+        </ul>
+      {% else %}
+        <ul class="navbar-nav mr-auto"></ul>
+      {% endif %}
       <form class="form-inline my-2 my-md-0">
         {% if not request.user.is_authenticated %}
           <a href="{% url 'register' %}" class="btn btn-primary my-2 mr-3 ">Zarejestruj się</a>
