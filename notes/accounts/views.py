@@ -3,6 +3,7 @@ from django.urls import reverse
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 def index_view(request):
     return render(request, 'index.html', {})
@@ -14,6 +15,7 @@ def register_view(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Twoje konto zostało utworzone')
             return redirect('login_view')
         else:
             error = '<span style="color: red;">Coś poszło nie tak :(<span>'
@@ -36,4 +38,5 @@ def login_view(request):
 @login_required
 def logout_view(request):
     logout(request)
+    messages.success(request, 'Wylogowano poprawnie')
     return redirect('login_view')

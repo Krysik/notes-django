@@ -39,8 +39,8 @@ def create_note(request, user_id):
 
 @login_required
 def update_note_view(request, user_id, note_id):
-    # user = User.objects.get(pk=user_id)
-    note = Note.objects.get(pk=note_id)
+    user = User.objects.get(pk=user_id)
+    note = get_object_or_404(Note, id=note_id)
     form = AddNoteForm(initial={'title': note.title, 'content': note.content})
     error = None
     if request.method == 'POST':
@@ -55,11 +55,13 @@ def update_note_view(request, user_id, note_id):
             return redirect('dashboard', request.user.id)
         else:
             error = 'Coś poszło nie tak, sprawdź poprawność danych'
+        
     context = {
-        # 'user': user,
         'note': note,
         'form': form,
         'error': error,
     }
     return render(request, 'notekeeper/create_note.html', context)
+    
+
 
