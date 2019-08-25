@@ -16,6 +16,7 @@
         {{ form.as_p }}
         <button type="submit" class="btn btn-success mt-2">Edytuj</button>
       </form>
+      <a href="{% url 'delete_note' user.id note.id %}" class="btn btn-danger mt-3">Usuń</a>
     {% endif %}
   </div>
   <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>

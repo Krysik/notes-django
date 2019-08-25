@@ -2,6 +2,11 @@
 {% block content %}
   {% include 'includes/_navbar.html' %}
   <div class="container pt-4">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" style="margin: 0;">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
     <h2>Dashboard page</h2>
     <div class="row px-3 py-4">
       <a href="{% url 'create_note' user.id %}" class="btn btn-outline-info">Dodaj notatkę</a>
@@ -25,7 +30,7 @@
         {% else %}
           <p>Brak notatek</p>
         {% endif %}
-      </div> {% comment %} row {% endcomment %}
+      </div>
     </div>
   </div>
 {% endblock %}
