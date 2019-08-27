@@ -13,7 +13,7 @@
             <a class="nav-link text-white" href="{% url 'dashboard' user.id %}">Twój panel</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Ustawienia</a>
+            <a class="nav-link text-white" href="{% url 'user_profile' user.id %}">Ustawienia</a>
           </li>
         </ul>
       {% else %}

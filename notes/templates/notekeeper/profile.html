@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% include 'includes/_navbar.html' %}
+  <div class="container pt-4">
+    <h2 class="mb-4">Twój profil</h2>
+    <p>Tutaj możesz dokonać zmiany swoich danych.</p>
+    <p>
+      <strong>Nazwa użytkownika: </strong>{{ user.username }}
+    </p>
+    <p>
+      <strong>Email: </strong>{{ user.email }}
+      <br />
+      <a href="#" class="btn btn-info mt-2">Zmień email</a>
+    </p>
+    <p>
+      Hasło: <br />
+      <a href="#" class="btn btn-info mt-2">Zmień hasło</a>
+    </p>
+  </div>
+{% endblock %}

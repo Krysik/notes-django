@@ -72,6 +72,11 @@ def delete_note(request, user_id, note_id):
     messages.success(request, 'Notatka została usunięta poprawnie')
     return redirect('dashboard', user.id)
 
+@login_required
+def user_profile(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    return render(request, 'notekeeper/profile.html')
+
     
 
 
