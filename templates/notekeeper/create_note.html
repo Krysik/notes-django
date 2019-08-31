@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+  {% include 'includes/_navbar.html' %}
+  <div class="container pt-4">
+    {% if not note %}
+      <h2>Utwórz notatkę</h2>
+      <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success mt-2">Utwórz</button>
+      </form>
+    {% else %}
+      <h2>Edytuj notatkę</h2>
+      <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success mt-2">Edytuj</button>
+      </form>
+      <a href="{% url 'delete_note' user.id note.id %}" class="btn btn-danger mt-3 modal-btn">Usuń</a>
+    {% endif %}
+  </div>
+  <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
+  <script src="{% static 'js/modal.js' %}"></script>
+  <script>
+    CKEDITOR.replace('editor')
+  </script>
+{% endblock %}

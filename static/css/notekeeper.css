@@ -21,6 +21,7 @@
   background-position-x: 80%;
 }
 
+/* Login form */
 .login-bg {
   overflow-y: none;
   display: flex;
@@ -59,4 +60,24 @@
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+/* Dashboard */
+.card-note {
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+}
+
+.note:hover {
+  text-decoration: none;
+}
+
+.update-date {
+  position: absolute;
+  padding-top: 3px;
+  background-color: #fff;
+  width: 100%;
+  left: 5px;
+  bottom: 0;
 }
