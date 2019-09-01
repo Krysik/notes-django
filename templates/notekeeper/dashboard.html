@@ -9,7 +9,7 @@
     {% endif %}
     <h2>Dashboard page</h2>
     <div class="row px-3 py-4">
-      <a href="{% url 'create_note' user.id %}" class="btn btn-outline-info">Dodaj notatkę</a>
+      <a href="{% url 'create_note' %}" class="btn btn-outline-info">Dodaj notatkę</a>
     </div>
     <div class="notes">
       <div class="row">
@@ -18,7 +18,7 @@
               <div class="col">
                 <div class="card card-note">
                   <div class="card-body">
-                    <a href="{% url 'update_note' request.user.id note.id %}" class="note">
+                    <a href="{% url 'update_note' note.id %}" class="note">
                       <h5 class="card-title">{{ note.title }}</h5>
                     </a>
                     <p class="card-text">{{ note.content|safe }}</p>
