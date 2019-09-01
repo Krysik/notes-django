@@ -11,14 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-# from .venvs import (
-#     DB_NAME,
-#     DB_USER,
-#     DB_PASSWORD,
-#     DB_HOST, 
-#     DB_PORT,
-#     DJANGO_SECRET_KEY
-# )
 import django_heroku
 from dotenv import load_dotenv
 
@@ -34,9 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'dj-notes.herokuapp.com']
 
 
 # Application definition
