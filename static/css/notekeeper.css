@@ -20,6 +20,10 @@
   background-repeat: no-repeat;
   background-position-x: 80%;
 }
+/* Register form */
+.register-btn {
+  margin-top: -35px;
+}
 
 /* Login form */
 .login-bg {
