@@ -9,7 +9,6 @@ from .models import Note
 
 @login_required
 def dashboard(request):
-    # user = get_object_or_404(User, id=user_id)
     notes = Note.objects.filter(user=request.user.id)
     error = None
     context = {
@@ -20,7 +19,6 @@ def dashboard(request):
 
 @login_required
 def create_note(request):
-    # user = get_object_or_404(User, id=user_id)
     form = AddNoteForm()
     error = None
     if request.method == 'POST':
@@ -41,7 +39,6 @@ def create_note(request):
 
 @login_required
 def update_note_view(request, note_id):
-    # user = get_object_or_404(User, id=user_id)
     note = get_object_or_404(Note, id=note_id)
     form = AddNoteForm(initial={'title': note.title, 'content': note.content})
     error = None
@@ -72,8 +69,7 @@ def delete_note(request, note_id):
     return redirect('dashboard')
 
 @login_required
-def user_profile(request, user_id):
-    user = get_object_or_404(User, id=user_id)
+def user_profile(request):
     return render(request, 'notekeeper/profile.html')
 
     
