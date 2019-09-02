@@ -5,10 +5,19 @@
       <h1 class="jumbotron-heading">Notekeeper</h1>
       <h3 class="jumbotron-heading font-weight-normal mt-3 ">Wszystkie notatki w jednym miejscu</h3>
       <p class="lead text-light mt-4">Dodawaj, usuwaj, nadawaj tagi i dziel się swoimi notatkami.</p>
-      <p>
-        <a href="{% url 'register' %}" class="btn btn-primary my-2 mr-3 btn-lg">Zarejestruj się</a>
-        <a href="{% url 'login_view' %}" class="btn btn-success my-2 btn-lg">Zaloguj się</a>
-      </p>
+      {% if not request.user.is_authenticated %}
+        <p>
+          <a href="{% url 'register' %}" class="btn btn-info my-2 mr-3 btn-lg">Zarejestruj się</a>
+          <a href="{% url 'login_view' %}" class="btn btn-success my-2 btn-lg">Zaloguj się</a>
+        </p>
+        <p>
+          <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-lg btn-primary my-2 mr-3">Facebook</a>
+        </p>
+      {% else %}
+        <p>
+          <a href="{% url 'dashboard' %}" class="btn btn-lg my-2 btn-info" >Twój profil</a>
+        </p>
+      {% endif %}
     </div>
   </header>
   <div class="container marketing mt-4">
