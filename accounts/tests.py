@@ -1,7 +1,7 @@
 from django.test import TestCase
 from .forms import RegisterForm, LoginForm
 from django.urls import reverse
-
+from django.core.exceptions import ValidationError
 # Forms
 class TestRegisterForm(TestCase):
     def setUp(self):
@@ -43,6 +43,22 @@ class TestRegisterForm(TestCase):
         password2 = self.form.password2
         self.assertGreaterEqual(len(password1), 8)
         self.assertGreaterEqual(len(password2), 8)
+    def test_email_validation(self):
+        data1 = {
+            'username': self.form.username,
+            'email': self.form.email,
+            'password1': self.form.password1,
+            'password2': self.form.password2,
+        }
+        form1 = RegisterForm(data=data1)
+        data2 = {
+            'username': 'xyz12',
+            'email': self.form.email,
+            'password1': self.form.password1,
+            'password2': self.form.password2,
+        }
+        form2 = RegisterForm(data=data2)
+        self.assertRaisesMessage(ValidationError, 'Taki email już istnieje')
 
 class TestLoginForm(TestCase):
     def setUp(self):

@@ -12,7 +12,6 @@ def dashboard(request):
     notes = Note.objects.filter(user=request.user.id)
     error = None
     context = {
-        # 'user': user,
         'notes': notes
     }
     return render(request, 'notekeeper/dashboard.html', context)
@@ -31,7 +30,6 @@ def create_note(request):
         else:
             error = 'Coś poszło nie tak, sprawdź poprawność danych'
     context = {
-        # 'user': user,
         'form': form,
         'error': error,
     }

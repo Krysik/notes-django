@@ -19,8 +19,11 @@
       {% if error %}
         {{ error|safe }}
       {% endif %}
+      {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+      {% endif %}
       <br /><br />
-      <button type="submit" class="btn btn-success">Zarejestruj się</button>
+      <button type="submit" class="btn btn-success register-btn">Zarejestruj się</button>
     </form>
     <br />
     <p>Jeśli posiadasz już konto <a href="{% url 'login_view' %}">Zaloguj się</a></p>

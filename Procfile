@@ -1,1 +1,1 @@
-web: gunicorn notes.wsgi --log-file -
+web: python manage.py collectstatic; gunicorn notes.wsgi --log-file -
