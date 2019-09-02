@@ -8,19 +8,16 @@ from .models import Note
 
 
 @login_required
-def dashboard(request, user_id):
-    user = get_object_or_404(User, id=user_id)
-    notes = Note.objects.filter(user=user_id)
+def dashboard(request):
+    notes = Note.objects.filter(user=request.user.id)
     error = None
     context = {
-        'user': user,
         'notes': notes
     }
     return render(request, 'notekeeper/dashboard.html', context)
 
 @login_required
-def create_note(request, user_id):
-    user = get_object_or_404(User, id=user_id)
+def create_note(request):
     form = AddNoteForm()
     error = None
     if request.method == 'POST':
@@ -29,19 +26,17 @@ def create_note(request, user_id):
             note = form.save(commit=False)
             note.user = request.user
             note.save()
-            return redirect('dashboard', user.id)
+            return redirect('dashboard')
         else:
             error = 'Coś poszło nie tak, sprawdź poprawność danych'
     context = {
-        'user': user,
         'form': form,
         'error': error,
     }
     return render(request, 'notekeeper/create_note.html', context)
 
 @login_required
-def update_note_view(request, user_id, note_id):
-    user = get_object_or_404(User, id=user_id)
+def update_note_view(request, note_id):
     note = get_object_or_404(Note, id=note_id)
     form = AddNoteForm(initial={'title': note.title, 'content': note.content})
     error = None
@@ -54,7 +49,7 @@ def update_note_view(request, user_id, note_id):
             note.content = content
             note.save(update_fields=['title', 'content'])
             note.save()
-            return redirect('dashboard', request.user.id)
+            return redirect('dashboard')
         else:
             error = 'Coś poszło nie tak, sprawdź poprawność danych'
     context = {
@@ -65,16 +60,14 @@ def update_note_view(request, user_id, note_id):
     return render(request, 'notekeeper/create_note.html', context)
 
 @login_required
-def delete_note(request, user_id, note_id):
-    user = get_object_or_404(User, id=user_id)
+def delete_note(request, note_id):
     note = get_object_or_404(Note, id=note_id)
     note.delete()
     messages.success(request, 'Notatka została usunięta poprawnie')
-    return redirect('dashboard', user.id)
+    return redirect('dashboard')
 
 @login_required
-def user_profile(request, user_id):
-    user = get_object_or_404(User, id=user_id)
+def user_profile(request):
     return render(request, 'notekeeper/profile.html')
 
     
