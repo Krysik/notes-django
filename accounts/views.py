@@ -4,6 +4,7 @@ from .forms import RegisterForm, LoginForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.exceptions import ValidationError
 
 def index_view(request):
     return render(request, 'index.html', {})
@@ -18,7 +19,7 @@ def register_view(request):
             messages.success(request, 'Twoje konto zostało utworzone')
             return redirect('login_view')
         else:
-            error = '<span style="color: red;">Coś poszło nie tak :(<span>'
+            error = '<span style="color: red;">Coś poszło nie tak :(</span>'
     return render(request, 'accounts/register.html', {'form': form, 'error': error})
 
 def login_view(request):

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-
+from django.core.exceptions import ValidationError
 
 
 class RegisterForm(UserCreationForm):
@@ -26,6 +26,11 @@ class RegisterForm(UserCreationForm):
             'password1',
             'password2',
         )
+    def clean(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise ValidationError("Taki email już istnieje")
+        return self.cleaned_data
 class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
