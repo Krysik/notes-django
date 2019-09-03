@@ -9,12 +9,10 @@
     </p>
     <p>
       <strong>Email: </strong>{{ user.email }}
-      <br />
-      <a href="#" class="btn btn-info mt-2">Zmień email</a>
     </p>
     <p>
       Hasło: <br />
-      <a href="#" class="btn btn-info mt-2">Zmień hasło</a>
+      <a href="{% url 'password_reset' %}" class="btn btn-info mt-2">Zmień hasło</a>
     </p>
   </div>
 {% endblock %}
