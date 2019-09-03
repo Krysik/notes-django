@@ -17,6 +17,7 @@
         {% endif %}
         <button type="submit" class="btn btn-success my-2">Zaloguj się</button>
       </form>
+      <p><a href="{% url 'password_reset' %}">Nie pamiętam hasła</a></p>
       <p>Jeśli nie posiadasz jeszcze konta to <a href="{% url 'register' %}">zarejestruj się</a>.</p>
     </div>
   </div>
