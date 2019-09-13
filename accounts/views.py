@@ -10,16 +10,13 @@ def index_view(request):
 
 def register_view(request):
     form = RegisterForm()
-    error = None
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Twoje konto zostało utworzone')
             return redirect('login_view')
-        else:
-            error = '<span style="color: red;">Coś poszło nie tak :(</span>'
-    return render(request, 'accounts/register.html', {'form': form, 'error': error})
+    return render(request, 'accounts/register.html', {'form': form})
 
 def login_view(request):
     form = LoginForm()

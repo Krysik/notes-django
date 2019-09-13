@@ -25,6 +25,9 @@
           <a href="{% url 'login_view' %}" class="btn btn-success my-2 mr-3 ">Zaloguj się</a>
           <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary my-2">Facebook</a>
         {% else %}
+          <p class="text-light px-4 my-2">
+            Zalogowano jako <span class="font-weight-bold">{{ user.username }}</span>
+          </p>
           <a href="{% url 'logout_view' %}" class="btn btn-danger my-2 mr-3 ">Wyloguj się</a>
         {% endif %}
         <!-- <input class="form-control" type="text" placeholder="Search"> -->
