@@ -3,11 +3,9 @@
 {% block content %}
   {% include 'includes/_navbar.html' %}
   <div class="container pt-4">
-    {% if messages %}
-      {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}" style="margin: 0;">{{ message }}</div>
-      {% endfor %}
-    {% endif %}
+    <div class="mb-2">
+      {% include 'includes/_messages.html' %}
+    </div>
     <h2 class="mb-3">Twój panel</h2>
     <div class="input-group flex-nowrap">
       <input type="text" class="form-control" id="searchBar" placeholder="Wyszukaj notatki po tytule">
@@ -32,7 +30,7 @@
               </div>
           {% endfor %}
         {% else %}
-          <p>Brak notatek</p>
+          <p class="px-3">Brak notatek</p>
         {% endif %}
       </div>
     </div>

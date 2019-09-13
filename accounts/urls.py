@@ -32,4 +32,5 @@ urlpatterns = [
         ),
         name='password_reset_complete'
     ),
+    path('accounts/activate/<uidb64>/<token>/', views.activate_an_email, name='activate_an_email')
 ]

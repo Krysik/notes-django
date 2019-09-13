@@ -16,7 +16,6 @@ class RegisterForm(UserCreationForm):
     username = forms.CharField(max_length=40, help_text='')
     email = forms.EmailField(max_length=40)
     password1 = forms.CharField(widget=forms.PasswordInput(), help_text='Minimum 8 znaków', min_length=8, max_length=50)
-    password2 = forms.CharField(widget=forms.PasswordInput(), help_text='')
 
     class Meta:
         model = User
