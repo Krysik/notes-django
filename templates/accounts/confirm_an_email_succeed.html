@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% include 'includes/_navbar.html' %}
+  <div class="container py-3">
+    {% if user %}
+      <h1>Twoje konto zostało aktywowane</h1>
+      <p class="lead">
+        <a href="{% url 'dashboard' %}">
+          Przejdź do swojego panelu
+        </a>
+      </p>
+    {% else %}
+      <h1>Nieprawidłowy link aktywacyjny</h1>
+      <p class="lead">Coś poszło nie tak :(. Spróbuj ponownie założyć konto lub skontaktuj się z pomocą techniczną.</p>
+    {% endif %}
+  </div>
+{% endblock %}

@@ -1,0 +1,5 @@
+{% autoescape off %}
+  Witaj {{ user.username }},
+  Kliknij poniżej, aby aktywować konto i tworzyć swoje notatki.
+  http://{{ domain }}{% url 'activate_an_email' uidb64=uid token=token %}
+{% endautoescape %}
