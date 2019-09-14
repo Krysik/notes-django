@@ -1,1 +1,3 @@
-web: rm -r staticfiles && python manage.py collectstatic && gunicorn notes.wsgi --log-file -
+web: rm -r staticfiles
+web: python manage.py collectstatic
+web: gunicorn notes.wsgi --log-file -
