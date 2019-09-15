@@ -4,7 +4,13 @@
   position: relative;
   color: #fff;
   margin-bottom: 0;
-  height: 73vh;
+  height: 95vh;
+}
+
+@media(min-width: 370px) {
+  #header-bg {
+    height: 80vh;
+  }
 }
 
 #header-bg::before {
