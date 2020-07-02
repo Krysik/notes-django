@@ -12,6 +12,8 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+from django.conf import settings
+
 def index_view(request):
     return render(request, 'index.html', {})
 
@@ -33,7 +35,10 @@ def register_view(request):
             })
             to_email = form.cleaned_data.get('email')
             email = EmailMessage(
-                        mail_subject, message, to=[to_email]
+                mail_subject,
+                message,
+                to=[to_email],
+                headers={ 'Reply To': settings.EMAIL_HOST_USER }
             )
             email.send()
             return render(request, 'accounts/confirm_an_email_msg.html')
