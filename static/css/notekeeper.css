@@ -4,12 +4,12 @@
   position: relative;
   color: #fff;
   margin-bottom: 0;
-  height: 95vh;
+  height: 80vh;
 }
 
 @media(min-width: 370px) {
   #header-bg {
-    height: 80vh;
+    height: 70vh;
   }
 }
 
@@ -26,6 +26,7 @@
   background-repeat: no-repeat;
   background-position-x: 80%;
 }
+
 /* Register form */
 .register-btn {
   margin-top: -35px;
@@ -48,9 +49,11 @@
   padding: 15px;
   margin: auto;
 }
+
 .form-signin .checkbox {
   font-weight: 400;
 }
+
 .form-signin .form-control {
   position: relative;
   box-sizing: border-box;
@@ -58,14 +61,17 @@
   padding: 10px;
   font-size: 16px;
 }
+
 .form-signin .form-control:focus {
   z-index: 2;
 }
+
 .form-signin input[type="text"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
+
 .form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
@@ -75,6 +81,7 @@
 /* Dashboard */
 .card-note {
   height: 240px;
+  margin: 15px 0;
   overflow: hidden;
   position: relative;
 }
@@ -85,7 +92,7 @@
 
 .update-date {
   position: absolute;
-  padding-top: 3px;
+  padding-top: 5px;
   background-color: #fff;
   width: 100%;
   left: 5px;
