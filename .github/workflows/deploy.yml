@@ -1,0 +1,24 @@
+name: Deploy Application
+
+on:
+  workflow_dispatch:
+    inputs:
+      home:
+        description: 'location'
+        required: false
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      
+      - name: Heroku Deployment
+        uses: akhileshns/heroku-deploy@v3.8.9
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "dj-notes"
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          procfile: "web gunicorn notes.wsgi --log-file -"
